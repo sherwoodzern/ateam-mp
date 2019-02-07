@@ -29,11 +29,11 @@ build:
         registry: https://phx.ocir.io/v2
 
 deploy-to-kubernetes:
-    box: maven:3.5.2-jdk-8  
-    steps:
+  box: openjdk:8-jre-slim  
+  steps:
     - bash-template
-    - script
-        name: Prepare Kubernetes files
+    - script:
+        name: "Prepare Kubernetes files"
         code: |
           mkdir $WERCKER_OUTPUT/kubernetes
           mv kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
@@ -41,5 +41,5 @@ deploy-to-kubernetes:
         name: deploy to kubernetes 
         server: $OKE_MASTER
         token: $OKE_TOKEN
-        insecure-skip-tls-verify; true
+        insecure-skip-tls-verify: true
         command: apply -f $WERCKER_OUTPUT_DIR/kubernetes/
