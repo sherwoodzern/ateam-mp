@@ -1,5 +1,6 @@
 build:
   box: docker
+  docker: true
   steps:
     - script:
         name: Run the program
