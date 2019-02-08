@@ -5,6 +5,7 @@ runmaven:
         name: Run maven
         code: |
           mvn install
+          echo let us see 
           ls -lrt
 buildimage:
   box: docker
