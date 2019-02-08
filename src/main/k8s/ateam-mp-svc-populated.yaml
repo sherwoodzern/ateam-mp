@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: welcome-service
+    namespace: default
+    labels:
+        app: welcome-service
+        version: v1
+spec:
+    selector:
+        app: welcome-service
+    ports:
+        - port: 8080 
+          targetPort: 8080
+          name: http
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: welcome-service-v1
+    namespace: default
+    labels:
+        app: welcome-service
+        version: v1
+spec:
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: welcome-service
+                version: v1
+        spec:
+            containers:
+                - image: phx.ocir.io/szern/ateam-mp:2481a9dcdf77617e937693f85d536710e20a08d4
+                  imagePullPolicy: Always
+                  name: welcome
+                  ports:
+                      - containerPort: 8080
