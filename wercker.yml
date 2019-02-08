@@ -22,7 +22,7 @@ build:
     - script: 
         name: Push the container to OCIR 
         code: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker login $DOCKER_REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker push $DOCKER_REPO:1.0.0 
         
 
