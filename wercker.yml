@@ -47,7 +47,13 @@ deploy-istio-components:
   steps:
     - kubectl:
         name: deploy the virtualservice
+        server: $OKE_MASTER
+        token: $OKE_TOKEN
+        insecure-skip-tls-verify: true
         command: apply -f src/main/istio/ateam-mp-virtualservice.yaml
     - kubectl: 
-        name: deploy the destination rule 
+        name: deploy the destination rule
+        server: $OKE_MASTER
+        token: $OKE_TOKEN
+        insecure-skip-tls-verify: true 
         command: apply -f src/main/istio/ateam-mp-destinationrule.yaml
