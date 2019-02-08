@@ -19,7 +19,7 @@ build:
       version: 3.5.2
     - internal/docker-push:
     #    entrypoint: bin/get_ip
-        cmd: ["java", "-jar", "/app/ateam-mp.jar"]
+    #    cmd: ["java", "-jar", "/app/ateam-mp.jar"]
         working-dir: $WERCKER_ROOT
         tag: 1.0.0
         ports: 8080
@@ -27,6 +27,13 @@ build:
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
         registry: https://phx.ocir.io/v2
+    - script:
+      name: Invoke the welcome service
+      code: |
+        mkdir app
+        cp libs /app/libs
+        cp /app/ateam-mp.jar /app
+        java -jar /app/ateam-mp.jar
 
 deploy-to-kubernetes:
   box: openjdk:8-jre-slim  

@@ -32,7 +32,7 @@ spec:
                 version: v1
         spec:
             containers:
-                - image: phx.ocir.io/intvravipati/szern/ateam-mp:2481a9dcdf77617e937693f85d536710e20a08d4
+                - image: phx.ocir.io/intvravipati/szern/ateam-mp:1.0.0
                   imagePullPolicy: Always
                   name: welcome
                   ports:
