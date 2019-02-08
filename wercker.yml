@@ -1,12 +1,13 @@
-runmaven:
+build:
   box: maven
   steps:
     - script:
         name: Run maven
         code: |
+          rm -r target
           mvn install
-          echo let us see 
-          ls -lrt
+          cp -r target $WERCKER_OUTPUT_DIR
+
 buildimage:
   box: docker
   docker: true
@@ -14,7 +15,6 @@ buildimage:
     - script:
         name: Build image
         code: |
-          cd target
           docker build -t ateam-mp:latest .
     - script:
         name: Run docker images to see the image we just created
