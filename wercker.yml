@@ -5,7 +5,7 @@ runmaven:
         name: Run maven
         code: |
           maven
-build:
+buildimage:
   box: docker
   docker: true
   steps:
