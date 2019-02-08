@@ -15,8 +15,7 @@ buildimage:
     - script:
         name: Build image
         code: |
-          pwd
-          ls
+          cd target
           docker build -t ateam-mp:latest .
     - script:
         name: Run docker images to see the image we just created
