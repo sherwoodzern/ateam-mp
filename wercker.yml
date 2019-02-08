@@ -1,10 +1,10 @@
 build:
-  box: openjdk:8-jre-slim
+  box: docker
   steps:
     - script:
         name: Run the program
         code: |
           echo Hello, this is the script step that will run my Java program
-          maven clean
+          docker --version
 
 
