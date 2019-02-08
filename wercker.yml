@@ -6,6 +6,6 @@ build:
         code: |
           echo Hello, this is the script step that will run my Java program
           cd target
-          docker build . -t ateam-mp:latest target
+          docker build -t ateam-mp:latest target
 
 
