@@ -3,12 +3,8 @@ build:
   docker: true
   steps:
     - script:
-        name: Run the program
+        name: Build image
         code: |
-          echo Hello, this is the script step that will run my Java program
-          pwd
-          ls
-          cd target
           docker build -t ateam-mp:latest .
     - script:
         name: Run docker ps to see the image we just created
