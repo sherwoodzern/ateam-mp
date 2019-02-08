@@ -19,5 +19,6 @@ buildimage:
     - script:
         name: Run docker images to see the image we just created
         code: |
+          ls
           docker images
 
