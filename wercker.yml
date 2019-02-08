@@ -2,7 +2,7 @@
 # Docker Hub https://hub.docker.com/_/openjdk/
 # Read more about containers on our dev center
 # https://devcenter.wercker.com/overview-and-core-concepts/containers/
-box: alpine:3.9
+box: docker 
 docker: true 
 
 # This is the build pipeline. Pipelines are the core of wercker
@@ -13,45 +13,6 @@ build:
     # Read more about steps on our dev center:
     # https://devcenter.wercker.com/development/steps/
   steps:
-    - script:
-        name: Install docker
-        code: apk --no-cache add docker 
-    - script:
-        name: Install curl
-        code: apk --no-cache add curl 
-    - script:
-        name: Explore the docker daemon
-        code: |
-          echo DOCKER_NETWORK_NAME=$DOCKER_NETWORK_NAME
-          echo DOCKER_HOST = $DOCKER_HOST
-          echo Running docker version 
-          docker version 
-          echo running docker ps 
-          docker ps 
-          echo running docker images 
-          docker images 
-          echo listing the docker networks 
-          docker network list 
-    # https://github.com/wercker/step-maven
-  # - wercker/maven:
-  #    goals: install
-  #    cache_repo: true
-  #    version: 3.5.2
-    #- internal/docker-push:
-    #    entrypoint: bin/get_ip
-    #    cmd: ["java", "-jar", "/app/ateam-mp.jar"]
-    #    working-dir: $WERCKER_ROOT
-    #    tag: 1.0.0
-    #    ports: 8080
-    #    username: $DOCKER_USERNAME
-    #    password: $DOCKER_PASSWORD
-    #    repository: $DOCKER_REPO
-    #    registry: https://phx.ocir.io/v2
-    - script:
-        name: List the directory structure
-        code: |
-          pwd 
-          ls -ltra
     - script:
         name: Build the container
         code: |
