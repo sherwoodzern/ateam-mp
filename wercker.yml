@@ -13,12 +13,21 @@ build:
     # Read more about steps on our dev center:
     # https://devcenter.wercker.com/development/steps/
   steps:
-    - script:
-        name: Install docker
-        code: apk --no-cache add docker 
-    - script:
-        name: Install curl
-        code: apk --no-cache add curl 
+  - wercker/maven:
+      goals: install
+      cache_repo: true
+      version: 3.5.2
+  - script:
+      echo ls
+      ls
+      echo ls target
+      ls target
+#    - script:
+#        name: Install docker
+#        code: apk --no-cache add docker 
+#    - script:
+#        name: Install curl
+#        code: apk --no-cache add curl 
     # https://github.com/wercker/step-maven
   # - wercker/maven:
   #    goals: install
@@ -39,16 +48,16 @@ build:
         code: |
           pwd 
           ls -ltra
-    - script:
-        name: Build the container
-        code: |
-          docker build -t ateam-mp:latest target
-          docker tag ateam-mp:latest $DOCKER_REPO:1.0.0
-    - script: 
-        name: Push the container to OCIR 
-        code: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker push $DOCKER_REPO:1.0.0 
+ #   - script:
+ #       name: Build the container
+ #       code: |
+ #         docker build -t ateam-mp:latest target
+ #         docker tag ateam-mp:latest $DOCKER_REPO:1.0.0
+ #   - script: 
+ #       name: Push the container to OCIR 
+ #       code: |
+ #         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+ #         docker push $DOCKER_REPO:1.0.0 
         
 
 #deploy-to-kubernetes:
