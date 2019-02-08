@@ -1,23 +1,10 @@
 build:
-  box: alpine
-  docker: true
-  steps: 
+  box: openjdk:8-jre-slim
+  steps:
     - script:
-        name: Install docker
-        code: apk --no-cache add docker    
-    - script:
-        name: Install Curl
-        code: apk --no-cache add curl         
-    - script:
-        name: Run a docker container 
-        code: docker run --rm -d -p 8888:80 --name static-site --network=$DOCKER_NETWORK_NAME dockersamples/static-site
-    - script:
-        name: Connect to the container
+        name: Run the program
         code: |
-          sleep 2 # allow time for the container to start
-          curl static-site:80
-    - script:
-        name: kill the container using docker kill
-        code: |
-          docker kill static-site
+          echo Hello, this is the script step that will run my Java program
+          maven clean
+
 
