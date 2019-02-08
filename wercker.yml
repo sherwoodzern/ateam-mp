@@ -8,7 +8,7 @@ build:
           cd target
           docker build -t ateam-mp:latest .
     - script:
-        name: Run docker ps to see the image we just created
+        name: Run docker images to see the image we just created
         code: |
-          docker ps
+          docker images
 
