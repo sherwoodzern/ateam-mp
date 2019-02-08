@@ -41,3 +41,13 @@ deploy-to-kubernetes:
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
         command: apply -f src/main/k8s/ateam-mp-svc-populated.yaml
+
+deploy-istio-components:
+  box: alpine:3.9
+  steps:
+    - kubectl:
+        name: deploy the virtualservice
+        command: apply -f src/main/istio/ateam-mp-virtualservice.yaml
+    - kubectl: 
+        name: deploy the destination rule 
+        command: apply -f src/main/istio/ateam-mp-destinationrule.yaml
