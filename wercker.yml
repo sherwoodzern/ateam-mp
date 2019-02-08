@@ -9,6 +9,8 @@ build:
           pwd
           ls
           cd target
-          docker build -t ateam-mp:latest target
-
+          docker build -t ateam-mp:latest ./target
+     - script:
+         name: Run docker ps to see the image we just created
+         code: docker ps
 
