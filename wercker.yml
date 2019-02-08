@@ -18,10 +18,10 @@ build:
       cache_repo: true
       version: 3.5.2
     - internal/docker-push:
-        entrypoint: bin/get_ip
-        cmd: 0.0.0.0 8080
+    #    entrypoint: bin/get_ip
+        cmd: ["java", "-jar", "/app/ateam-mp.jar"]
         working-dir: $WERCKER_ROOT
-        tag: $WERCKER_GIT_COMMIT
+        tag: 1.0.0
         ports: 8080
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
