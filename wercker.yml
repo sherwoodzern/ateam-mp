@@ -31,8 +31,8 @@ build:
       name: Invoke the welcome service
       code: |
         mkdir app
-        cp libs /app/libs
-        cp /app/ateam-mp.jar /app
+        cp $WERCKER_ROOT/libs /app/libs
+        cp $WERCKER_ROOT/ateam-mp.jar /app
         java -jar /app/ateam-mp.jar
 
 deploy-to-kubernetes:
