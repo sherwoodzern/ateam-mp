@@ -19,6 +19,19 @@ build:
     - script:
         name: Install curl
         code: apk --no-cache add curl 
+    - script:
+        name: Explore the docker daemon
+        code: |
+          echo DOCKER_NETWORK_NAME=$DOCKER_NETWORK_NAME
+          echo DOCKER_HOST = $DOCKER_HOST
+          echo Running docker version 
+          docker version 
+          echo running docker ps 
+          docker ps 
+          echo running docker images 
+          docker images 
+          echo listing the docker networks 
+          docker network list 
     # https://github.com/wercker/step-maven
   # - wercker/maven:
   #    goals: install
