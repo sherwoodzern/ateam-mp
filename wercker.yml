@@ -4,7 +4,8 @@ runmaven:
     - script:
         name: Run maven
         code: |
-          maven
+          mvn install
+          ls -lrt
 buildimage:
   box: docker
   docker: true
